@@ -50,6 +50,18 @@ jobs:
       - name: Auth Drift
         run: drift auth login     
  
+      - name: Install luarocks (windows)
+        if: runner.os == 'Windows'
+        run: choco install -y luarocks
+      - name: Install luarocks (linux)
+        if: runner.os == 'Linux'
+        run: sudo apt install luarocks
+      - name: Install luarocks (macos)
+        if: runner.os == 'MacOS'
+        run: brew install luarocks
+      - name: Install luarocks deps
+        run: luarocks install dkjson
+
       - name: Install dependencies
         run: npm i
       
