@@ -82,11 +82,11 @@ jobs:
       - name: set lua path
         if: runner.os == 'Linux'
         run: 
-         echo 'LUA_PATH='./?.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/init.lua;/usr/local/lib/lua/5.1/?.lua;/usr/local/lib/lua/5.1/?/init.lua;/usr/share/lua/5.1/?.lua;/usr/share/lua/5.1/?/init.lua;/home/runner/.luarocks/share/lua/5.1/?.lua;/home/runner/.luarocks/share/lua/5.1/?/init.lua'' >> $GITHUB_PATH
+         echo "LUA_PATH='./?.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/init.lua;/usr/local/lib/lua/5.1/?.lua;/usr/local/lib/lua/5.1/?/init.lua;/usr/share/lua/5.1/?.lua;/usr/share/lua/5.1/?/init.lua;/home/runner/.luarocks/share/lua/5.1/?.lua;/home/runner/.luarocks/share/lua/5.1/?/init.lua'" >> $GITHUB_PATH
       - name: set lua path
         if: matrix.os == 'macos-15'
         run: 
-         echo 'LUA_PATH="$(brew --prefix luarocks)/share/lua/5.5/?.lua"' >> $GITHUB_PATH
+         echo 'LUA_PATH=$(brew --prefix luarocks)/share/lua/5.5/?.lua' >> $GITHUB_PATH
       - name: set lua path
         if: runner.os == 'Windows'
         run: 
