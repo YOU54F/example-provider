@@ -68,7 +68,26 @@ jobs:
         run: luarocks install dkjson
 
       - name: test lua with dkjson
+        if: runner.os == 'Windows'
+        run: lua.exe test.lua
+      - name: test lua with dkjson
+        if: runner.os != 'Windows'
         run: lua test.lua
+
+
+      - name: set lua path
+        if: runner.os == 'Linux'
+        run: 
+         echo 'LUA_PATH="/usr/share/lua/5.5/?.lua"' >> $GITHUB_PATH
+      - name: set lua path
+        if: matrix.os == 'macos-15-intel'
+        run: 
+         echo 'LUA_PATH="$(brew --prefix luarocks)/share/lua/5.5/?.lua"' >> $GITHUB_PATH
+      - name: set lua path
+        if: runner.os == 'Windows'
+        run: 
+          echo "C:\Program Files (x86)\Lua\5.5" >> $GITHUB_PATH
+
       - name: Install dependencies
         run: npm i
       
