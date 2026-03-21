@@ -16,7 +16,7 @@ const runDrift = (variant = 'default') => {
         '--server-url',
         'http://localhost:8080/',
         '--log-level',
-        'error',
+        'debug',
         '--output-dir',
         'output',
         '--generate-result'

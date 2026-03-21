@@ -14,6 +14,10 @@ end
 local exports = {
   event_handlers = {
     ["operation:started"] = function(event, data)
+      local json = require("dkjson")
+      local payload = {status = "ok"}
+      print(json.encode(payload))
+      print(json.encode(data))
       local operation_id = extract_operation_id(data)
       if operation_id then
         local res = http({
