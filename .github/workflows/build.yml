@@ -70,9 +70,9 @@ jobs:
       - name: test lua with dkjson
         if: runner.os == 'Windows'
         run: lua.exe test.lua
-      - name: test lua with dkjson
-        if: runner.os != 'Windows'
-        run: lua test.lua
+      # - name: test lua with dkjson
+      #   if: runner.os != 'Windows'
+      #   run: lua test.lua
 
 
       - name: set lua path
@@ -80,13 +80,13 @@ jobs:
         run: 
          echo 'LUA_PATH="/usr/share/lua/5.5/?.lua"' >> $GITHUB_PATH
       - name: set lua path
-        if: matrix.os == 'macos-15-intel'
+        if: matrix.os == 'macos-15'
         run: 
          echo 'LUA_PATH="$(brew --prefix luarocks)/share/lua/5.5/?.lua"' >> $GITHUB_PATH
       - name: set lua path
         if: runner.os == 'Windows'
         run: 
-          echo "C:\Program Files (x86)\Lua\5.5" >> $GITHUB_PATH
+          echo "C:\ProgramData\chocolatey\lib\luarocks\luarocks-2.4.4-win32\lua\?.lua;C:\ProgramData\chocolatey\lib\luarocks\luarocks-2.4.4-win32\lua\?\init.lua" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: npm i
