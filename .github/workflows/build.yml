@@ -20,7 +20,7 @@ jobs:
         os: [
             ubuntu-latest,
             ubuntu-22.04-arm,
-            windows-11,
+            windows-latest,
             windows-11-arm,
             macos-15-intel,
             macos-15
